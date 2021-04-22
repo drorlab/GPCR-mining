@@ -3,7 +3,7 @@ Functions to scrape GPCR data from the web.
 
 ## Installation
 
-    git pull https://github.com/drorlab/GPCR-mining
+    git clone https://github.com/drorlab/GPCR-mining
     cd GPCR-mining
     pip install -e .
 
