@@ -14,9 +14,9 @@ Looking up a large number of residues or including the conversion for a specific
 
 To save such a sequence in a more easily usable CSV file, run
 
-    python -m gpcrmining.gpcrdb -n <GPCR_NAME> -d <DIR>
+    python -m gpcrmining.gpcrdb -n GPCR_NAME -d DIR
 
-with "<GPCR_NAME>" being the name of the GPCR as used in the corresponding GPCRmd URL and "<DIR>" is the directory where the data should be saved (which is created if it does not exist).
+with "GPCR_NAME" being the name of the GPCR as used in the corresponding GPCRmd URL and "DIR" is the directory where the data should be saved (which is created if it does not exist).
 
 For example,
 
