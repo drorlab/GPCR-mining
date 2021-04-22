@@ -6,7 +6,7 @@ from .sequence import *
 @click.option('--verbose/--no-verbose', default=False)
 def main(name, directory='.', verbose=False):
     print('writing file to '+directory)
-    res_info = download_gpcrmd_residues(name, directory=directory, show=verbose)
+    res_info = download_gpcrdb_residues(name, directory=directory, show=verbose)
 
 
 if __name__ == "__main__":
