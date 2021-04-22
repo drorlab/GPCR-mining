@@ -1,0 +1,29 @@
+from setuptools import setup
+
+setup(name='GPCR-mining',
+      version='0.1.0',
+      description='Functions to scrape GPCR data from the web.',
+      url='http://github.com/drorlab/GPCR-mining',
+      author='Martin Voegele',
+      author_email='mvoegele@stanford.edu',
+      license='MIT',
+      packages=['gpcrmining'],
+      zip_safe=False,
+      install_requires=[
+        'numpy',
+        'pandas',
+        'MDAnalysis',
+        'matplotlib',
+      ],
+      classifiers=[
+        # How mature is this project? Common values are
+        #   3 - Alpha
+        #   4 - Beta
+        #   5 - Production/Stable
+        'Development Status :: 1',
+        # license (should match "license" above)
+        'License :: OSI Approved :: MIT License',
+        # Supported Python versions
+        'Programming Language :: Python :: 3',
+      ],)
+
