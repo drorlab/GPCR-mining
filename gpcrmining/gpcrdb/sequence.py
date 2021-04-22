@@ -35,15 +35,27 @@ def _extract_gpcrdb_residue_info(residue_html):
 
 
 def download_gpcrdb_residues(name, directory='.', show=False):
+    """
+    Downloads a sequence from GPCRdb and saves it as CSV file.
+    
+    Parameters
+    ----------
+        name : str
+            Name of the GPCR to download (as in its GPCRdb URL). 
+        directory : str
+            Target directory.
+            The directory is created if it does not exist.
+        show : bool
+            Print the sequence to the terminal.
+    """  
     url = 'https://gpcrdb.org/protein/'+name+'/'
     req = requests.get(url, allow_redirects=True)
     txt = req.content.decode(req.encoding)
-    residue_html = _extract_gpcrmd_residue_html(txt)
-    residue_info = _extract_gpcrmd_residue_info(residue_html)
+    residue_html = _extract_gpcrdb_residue_html(txt)
+    residue_info = _extract_gpcrdb_residue_info(residue_html)
     # Write information to file
     Path(directory).mkdir(parents=True, exist_ok=True)
     out_filename = Path(directory).joinpath('gpcrdb-residues_'+name+'.csv')
-    #out_filename = os.path.join(directory,'gpcrdb-residues_'+name+'.csv')
     np.savetxt(out_filename, residue_info, delimiter=',', fmt='%s')
     if show:
         for res in residue_info:
