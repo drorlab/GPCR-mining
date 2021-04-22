@@ -85,12 +85,82 @@ def download_gpcrdb_residues(name, directory='.', show=False):
     txt = req.content.decode(req.encoding)
     residue_html = _extract_gpcrdb_residue_html(txt)
     residue_info = _extract_gpcrdb_residue_info(residue_html)
-    # Write information to file
+    # Write information to CSV file
     Path(directory).mkdir(parents=True, exist_ok=True)
     out_filename = Path(directory).joinpath('gpcrdb-residues_'+name+'.csv')
-    np.savetxt(out_filename, residue_info, delimiter=',', fmt='%s')
+    np.savetxt(out_filename, residue_info, delimiter=',', fmt='%s', 
+               header='Part, SeqID, Code, GPCRdbID')
     if show:
         for res in residue_info:
             print('%6s %4s %1s %s'%(res[0],res[1],res[2],res[3]))
     return residue_info
+
+
+def load_as_array(name, directory):
+    filename = Path(directory).joinpath('gpcrdb-residues_'+name+'.csv')
+    return np.loadtxt(filename ,dtype=str, delimiter=',', skiprows=1)
+
+
+def load_as_dataframe(name, directory):
+    filename = Path(directory).joinpath('gpcrdb-residues_'+name+'.csv')
+    df = pd.read_csv(filename)
+    for i in range(len(df.columns)):
+        df.columns.values[i] = df.columns.values[i].split(' ')[-1]
+    return df
+    
+    
+def select_by_gpcrdbnum(res_array, gpcrdb_num):
+    
+    out_list = []
+    
+    # Go through all residues
+    for res in res_array:
+        
+        # Read out residue data and build labels
+        resnum = res[1]
+        if res[3] == '':
+            reslabel = res[2]+res[1]
+        else:
+            reslabel = res[2]+res[3].split('x')[0]
+            
+        # Add residue info if it is in the list
+        if reslabel[1:] in gpcrdb_num:
+            out_list.append(res)
+
+    return out_list
+
+
+def select_by_resnum(res_array, res_num):
+    
+    out_list = []
+    
+    # Go through all residues
+    for res in res_array:
+            
+        # Add residue info if it is in the list
+        if res[1] in res_num:
+            out_list.append(res)
+
+    return out_list
+    
+    
+def print_residues(ar, fmt='plain', segid='R'):
+    
+    for res in ar:
+        
+        # Read out residue data and build labels
+        resnum = res[1]
+        if res[3] == '':
+            reslabel = res[2]+res[1]
+        else:
+            reslabel = res[2]+res[3].split('x')[0]
+            
+        # Print if a valid format is given
+        if fmt=='drormd':
+            label = reslabel.replace('.','x')
+            print("    '%s': 'segid %s and resid %s'"%(label, segid, resnum))
+        elif fmt=='plain':
+            print('%6s %4s %1s %s'%(res[0],res[1],res[2],res[3]))
+            
+    return
 
