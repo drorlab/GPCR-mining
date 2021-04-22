@@ -4,7 +4,21 @@ import requests
 import numpy as np
 from pathlib import Path
 
-def _extract_gpcrmd_residue_html(txt):
+def _extract_gpcrdb_residue_html(txt):
+    """
+    Extracts the relevant lines for all residues from a GPCRdb html entry.
+    
+    Parameters
+    ----------
+        txt : str
+            Content (html) of the website with the GPCRdb entry.
+
+    Returns
+    -------
+        residue_html : list
+            A list in which each item contains the html lines for one residue.
+            
+    """  
     res_start_line = '                        <td class="seqv seqv-sequence">'
     res_end_line = '                        </td>'
     spl = txt.split('\n')
@@ -21,6 +35,24 @@ def _extract_gpcrmd_residue_html(txt):
 
 
 def _extract_gpcrdb_residue_info(residue_html):
+    """
+    Extracts the relevant info from GPCRdb html entries of residues.
+    
+    Parameters
+    ----------
+        residue_html : list
+            A list in which each item contains the html lines for one residue.
+
+    Returns
+    -------
+        residue_info : list
+            A list in which each item contains the following strings:
+            - part of the residue
+            - sequential residue number
+            - amino acid 1-letter code
+            - GPCRdb residue ID
+            
+    """
     info = []
     for res in residue_html:
         res_part = res[2].split('>')[1]
