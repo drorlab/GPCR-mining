@@ -9,7 +9,7 @@ Functions to scrape GPCR data from the web.
 
 ## Get a sequence with numbering from the GPCRdb
 
-The GPCRdb provides a comprehensive overview for the sequence of a GPCR, including a convenient numbering scheme, based on Ballesteros-Weinstein numbering.
+The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for the sequence of a GPCR, including a convenient numbering scheme, based on Ballesteros-Weinstein numbering.
 Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious.
 
 To save such a sequence in a more easily usable CSV file, run
