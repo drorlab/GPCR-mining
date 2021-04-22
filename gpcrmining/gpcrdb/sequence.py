@@ -20,7 +20,7 @@ def _extract_gpcrmd_residue_html(txt):
     return residue_html
 
 
-def _extract_gpcrmd_residue_info(residue_html):
+def _extract_gpcrdb_residue_info(residue_html):
     info = []
     for res in residue_html:
         res_part = res[2].split('>')[1]
@@ -34,7 +34,7 @@ def _extract_gpcrmd_residue_info(residue_html):
     return info
 
 
-def download_gpcrmd_residues(name, directory='.', show=False):
+def download_gpcrdb_residues(name, directory='.', show=False):
     url = 'https://gpcrdb.org/protein/'+name+'/'
     req = requests.get(url, allow_redirects=True)
     txt = req.content.decode(req.encoding)
