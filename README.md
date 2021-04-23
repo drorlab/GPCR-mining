@@ -30,17 +30,18 @@ writes the file 'gpcrdb-residues_adrb1_human.csv' into the directory data-gpcrmd
 
 You can select residues and print their information in various formats.
 
-To select by the GPCRdb numbering, use the option '-id'. The residues have to be provided in the format X.Y with X the part of the GPCR and Y the relative residue number. 
+To select by a generic residue numbering scheme, use the option '-id'. The residues have to be provided in the format X.Y with X the part of the GPCR and Y the relative residue number. 
 GPCRdb uses two similar [numbering systems](https://docs.gpcrdb.org/generic_numbering.html) (one sequence-based, following Ballesteros-Weistein, Wooten,... and one corrected for helix bulges).
-By default, the code will reeturn the combined format. For input, both formats can be used (BW etc. with a . as sperator and the GPCRdb format with x).
+By default, the code will return the combined format. For input, both formats can be used (BW etc. with a . as sperator and the GPCRdb format with x).
+To select multiple residues, their IDs have to be separated by a whitespace and everything enclosed in quotation marks.
+
+    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50"
 
 To select by the sequential residue numbering, use the option '-rn'.
 
-In both options, multiple residues can be selected. Their IDs have to be separated by a whitespace and everything enclosed in quotation marks.
+    python -m gpcrmining.gpcrdb -n adrb1_human -rn "230 231 232 233 313 339" 
 
-If both options are provided, only residues that fulfill both conditions will be printed. 
-
-For example,
+If both options are provided, only residues that fulfill both conditions will be printed. For example,
 
     python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50" -rn "230 231 232 233 313 339"    
     
