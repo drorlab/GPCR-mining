@@ -26,7 +26,7 @@ For example,
 
 writes the file 'gpcrdb-residues_adrb1_human.csv' into the directory data-gpcrmd.
 
-### Select specific residues and formats
+### Select specific residues
 
 You can select residues and print their information in various formats.
 
@@ -52,7 +52,14 @@ prints the following:
        TM6  313 R 6.24x24
        TM6  339 P 6.50x50
 
-Available output formats are 'plain' and 'drormd'. The specific DrorMD format has an option to define one or multiple segment IDs.
+### Output formats
+
+Available output formats are 'plain' and 'drormd', with 'plain' (as above) being the default. 
+If you want to have another format added, you have two options:
+- open an issue with a description of what you have in mind or
+- fork the repo, implement your favorite format as an additional option, and open a pull request. 
+
+The specific DrorMD format has an option to define one or multiple segment IDs.
 For example, 
 
     python -m gpcrmining.gpcrdb -n adrb1_human -id "6.24 6.27 6.50" -f drormd -s 'P0 P1'
