@@ -3,14 +3,22 @@ Functions to scrape GPCR data from the web.
 
 ## Installation
 
+You can install the python package via pip
+
     git clone https://github.com/drorlab/GPCR-mining
     cd GPCR-mining
     pip install -e .
 
+To include the functions in your Python workflow, ipmport the library via
+
+    import gpcrmining.gpcrdb
+    
+See below for an explanation on how to run the main script from the command line.
+
 ## GPCRdb sequence numbering
 
-The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for the sequence of a GPCR, including a convenient numbering scheme, based on Ballesteros-Weinstein numbering.
-Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious.
+The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for the sequence of a GPCR, including definitions of transmembrane helices and generic residue numbering.
+Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious. Here we provide 
 
 ### Obtain the entire sequence
 
@@ -30,9 +38,10 @@ To select residues by their sequential number, use the option _-rn_. To select m
 
     python -m gpcrmining.gpcrdb -n adrb1_human -rn "230 231 232 233 313 339" 
     
-To select by a generic residue numbering scheme, use the option _-id_.
+To select residues by a generic residue numbering scheme, use the option _-id_.
 GPCRdb uses two similar [numbering systems](https://docs.gpcrdb.org/generic_numbering.html) (one sequence-based, following Ballesteros-Weistein, Wooten,... and one corrected for helix bulges).
-By default, the code will return the combined format. For input, both formats can be used (BW etc. with a dot as sperator and the GPCRdb format with x). Numberings can be mixed, e.g.,
+By default, the code will return the combined format. 
+For input, both formats can be used (BW etc. with a dot as sperator and the GPCRdb format with x). Numbering schemes can be mixed, e.g.,
 
     python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50"
 
@@ -51,7 +60,8 @@ prints the following:
 ### Output formats
 
 Available output formats are 'plain' and 'drormd', with 'plain' (as above) being the default. 
-If you want to have another format added, you have two options:
+
+If you would like to have another format added, you have two options:
 - open an issue with a description of what you have in mind or
 - fork the repo, implement your favorite format as an additional option, and open a pull request. 
 
