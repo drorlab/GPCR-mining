@@ -7,8 +7,7 @@ from .sequence import *
 @click.option('-rn', '--res_num', type=str, default='')
 @click.option('-f', '--fmt', type=str, default='plain')
 @click.option('-s', '--segid', type=str, default='R')
-@click.option('-ns', '--num-scheme', type=str, default='both')
-def main(name, directory, gpcrdb_id, res_num, fmt, segid, num_scheme):
+def main(name, directory, gpcrdb_id, res_num, fmt, segid):
     gpcrdb_id = [i for i in gpcrdb_id.split(' ') if i] 
     res_num = [i for i in res_num.split(' ') if i] 
     print('Residue mapping for '+name+', using directory '+directory+'.')
@@ -16,8 +15,7 @@ def main(name, directory, gpcrdb_id, res_num, fmt, segid, num_scheme):
         res_info = download_gpcrdb_residues(name, directory=directory, show=False)
     res_array = load_as_array(name, directory)
     if len(gpcrdb_id) > 0:
-        print(num_scheme)
-        res_array = select_by_gpcrdbnum(res_array, gpcrdb_id, numbering=num_scheme)
+        res_array = select_by_gpcrdbnum(res_array, gpcrdb_id)
     if len(res_num) > 0:
         res_array = select_by_resnum(res_array, res_num)
     print_residues(res_array, fmt=fmt, segid=segid)

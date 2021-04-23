@@ -31,8 +31,8 @@ writes the file 'gpcrdb-residues_adrb1_human.csv' into the directory data-gpcrmd
 You can select residues and print their information in various formats.
 
 To select by the GPCRdb numbering, use the option '-id'. The residues have to be provided in the format X.Y with X the part of the GPCR and Y the relative residue number. 
-GPCRdb uses two similar numbering systems (one sequence-based, following Ballesteros-Weistein and one corrected for helix bulges). 
-By default, the code will select all residues that match in either of these systems. If you want to consider only the sequence-based numbering schemes, use the option -ns bw. And if you want to consider only the new GPCRdb numbering scheme, use -ns db.
+GPCRdb uses two similar [numbering systems](https://docs.gpcrdb.org/generic_numbering.html) (one sequence-based, following Ballesteros-Weistein, Wooten,... and one corrected for helix bulges).
+By default, the code will reeturn the combined format. For input, both formats can be used (BW etc. with a . as sperator and the GPCRdb format with x).
 
 To select by the sequential residue numbering, use the option '-rn'.
 
@@ -42,7 +42,7 @@ If both options are provided, only residues that fulfill both conditions will be
 
 For example,
 
-    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.46 6.24 6.27 6.50" -rn "230 231 232 233 313 339"    
+    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50" -rn "230 231 232 233 313 339"    
     
 prints the following:
 
@@ -51,7 +51,6 @@ prints the following:
        TM5  232 S 5.46x461
        TM6  313 R 6.24x24
        TM6  339 P 6.50x50
-
 
 Available output formats are 'plain' and 'drormd'. The specific DrorMD format has an option to define one or multiple segment IDs.
 For example, 

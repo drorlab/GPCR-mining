@@ -109,7 +109,7 @@ def load_as_dataframe(name, directory):
     return df
     
     
-def select_by_gpcrdbnum(res_array, gpcrdb_num, numbering='both'):
+def select_by_gpcrdbnum(res_array, gpcrdb_num):
     out_list = []
     # Go through all residues
     for res in res_array:
@@ -121,11 +121,14 @@ def select_by_gpcrdbnum(res_array, gpcrdb_num, numbering='both'):
             if reslabel in gpcrdb_num:
                 selected = True
         else:
+            reslabel = res[3]
             reslabel_bw = res[3].split('x')[0]
-            reslabel_db = res[3].split('.')[0]+'.'+res[3].split('x')[1]
-            if reslabel_bw in gpcrdb_num and numbering in ['bw','both']:
+            reslabel_db = res[3].split('.')[0]+'x'+res[3].split('x')[1]
+            if reslabel in gpcrdb_num:
                 selected = True
-            if reslabel_db in gpcrdb_num and numbering in ['db','both']:
+            if reslabel_bw in gpcrdb_num:
+                selected = True
+            if reslabel_db in gpcrdb_num:
                 selected = True
         # Add residue info if it is in the list
         if selected:
