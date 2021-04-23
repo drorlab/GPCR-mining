@@ -5,11 +5,13 @@ from .sequence import *
 @click.option('-d', '--directory', type=click.Path(exists=False), default='./data-gpcrdb')
 @click.option('-id', '--gpcrdb-id', type=str, default='')
 @click.option('-rn', '--res_num', type=str, default='')
+@click.option('-p', '--part', type=str, default='')
 @click.option('-f', '--fmt', type=str, default='plain')
 @click.option('-s', '--segid', type=str, default='R')
-def main(name, directory, gpcrdb_id, res_num, fmt, segid):
+def main(name, directory, gpcrdb_id, res_num, part, fmt, segid):
     gpcrdb_id = [i for i in gpcrdb_id.split(' ') if i] 
     res_num = [i for i in res_num.split(' ') if i] 
+    part = [i for i in part.split(' ') if i]
     print('Residue mapping for '+name+', using directory '+directory+'.')
     if not Path(directory).joinpath('gpcrdb-residues_'+name+'.csv').is_file():
         res_info = download_gpcrdb_residues(name, directory=directory, show=False)
@@ -18,6 +20,8 @@ def main(name, directory, gpcrdb_id, res_num, fmt, segid):
         res_array = select_by_gpcrdbnum(res_array, gpcrdb_id)
     if len(res_num) > 0:
         res_array = select_by_resnum(res_array, res_num)
+    if len(part) > 0:
+        res_array = select_by_part(res_array, part)
     print_residues(res_array, fmt=fmt, segid=segid)
 
 

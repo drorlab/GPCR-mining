@@ -45,7 +45,11 @@ For input, both formats can be used (BW etc. with a dot as sperator and the GPCR
 
     python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50"
 
-If sequential and generic options are provided, only residues that fulfill both conditions will be printed. For example,
+To select defined parts of the receptor, use the option _-p_.
+
+    python -m gpcrmining.gpcrdb -n adrb1_human -p "N-term TM7 ICL2"
+
+If several selection flags are provided, only residues that fulfill all conditions will be printed. For example,
 
     python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50" -rn "230 231 232 233 313 339"    
     
@@ -56,6 +60,7 @@ prints the following:
        TM5  232 S 5.46x461
        TM6  313 R 6.24x24
        TM6  339 P 6.50x50
+
 
 ### Output formats
 
@@ -73,8 +78,8 @@ For example,
 prints the numbers in a format that can be directly copied into a DrorMD conditions file:
 
     Residue mapping for adrb1_human, using directory ./data-gpcrdb.
-    'R6x24': 'segid P0 P1 and resid 313'
-    'A6x27': 'segid P0 P1 and resid 316'
-    'P6x50': 'segid P0 P1 and resid 339'
+    'R6.24x24': 'segid P0 P1 and resid 313'
+    'A6.27x27': 'segid P0 P1 and resid 316'
+    'P6.50x50': 'segid P0 P1 and resid 339'
 
     

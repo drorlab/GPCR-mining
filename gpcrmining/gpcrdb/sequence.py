@@ -148,7 +148,21 @@ def select_by_resnum(res_array, res_num):
             out_list.append(res)
 
     return out_list
-    
+
+
+def select_by_part(res_array, parts):
+
+    out_list = []
+
+    # Go through all residues
+    for res in res_array:
+
+        # Add residue info if it is in the list
+        if res[0] in parts:
+            out_list.append(res)
+
+    return out_list
+
     
 def print_residues(ar, fmt='plain', segid='R'):
     
@@ -159,14 +173,13 @@ def print_residues(ar, fmt='plain', segid='R'):
         if res[3] == '':
             reslabel = res[2]+res[1]
         else:
-            reslabel = res[2]+res[3].split('x')[0]
+            reslabel = res[2]+res[3]
             
         # Print if a valid format is given
-        if fmt=='drormd':
-            label = reslabel.replace('.','x')
-            print("    '%s': 'segid %s and resid %s'"%(label, segid, resnum))
-        elif fmt=='plain':
+        if fmt=='plain':
             print('%6s %4s %1s %s'%(res[0],res[1],res[2],res[3]))
+        elif fmt=='drormd': 
+            print("    '%s': 'segid %s and resid %s'"%(reslabel, segid, resnum))
             
     return
 
