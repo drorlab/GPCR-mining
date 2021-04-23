@@ -29,20 +29,31 @@ writes the file 'gpcrdb-residues_adrb1_human.csv' into the directory data-gpcrmd
 ### Select specific residues and formats
 
 You can select residues and print their information in various formats.
-To select by the GPCRdb numbering, use the option '-id'. The residues have to be provided in the format X.Y with X the part of the GPCR and Y the relative residue number.
-To select by the sequential residue numbering, use the option '-rn'.
-In both options, multiple residues can be selected. Their IDs have to be separated by a whitespace and everything enclosed in quotation marks.
-If both options are provided, only residues that fulfill both conditions will be printed. For example,
 
-    python -m gpcrmining.gpcrdb -n adrb1_human -id "6.24 6.27 6.50" -rn "34 313 339"
+To select by the GPCRdb numbering, use the option '-id'. The residues have to be provided in the format X.Y with X the part of the GPCR and Y the relative residue number. 
+GPCRdb uses two similar numbering systems (one sequence-based, following Ballesteros-Weistein and one corrected for helix bulges). 
+By default, the code will select all residues that match in either of these systems. If you want to consider only the sequence-based numbering schemes, use the option -ns bw. And if you want to consider only the new GPCRdb numbering scheme, use -ns db.
+
+To select by the sequential residue numbering, use the option '-rn'.
+
+In both options, multiple residues can be selected. Their IDs have to be separated by a whitespace and everything enclosed in quotation marks.
+
+If both options are provided, only residues that fulfill both conditions will be printed. 
+
+For example,
+
+    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.46 6.24 6.27 6.50" -rn "230 231 232 233 313 339"    
     
-only prints the following:
+prints the following:
 
     Residue mapping for adrb1_human, using directory ./data-gpcrdb.
-    TM6  313 R 6.24x24
-    TM6  339 P 6.50x50
+       TM5  231 V 5.45x46
+       TM5  232 S 5.46x461
+       TM6  313 R 6.24x24
+       TM6  339 P 6.50x50
 
-Available formats are 'plain' and 'drormd'. The specific DrorMD format has an option to define one or multiple segment IDs.
+
+Available output formats are 'plain' and 'drormd'. The specific DrorMD format has an option to define one or multiple segment IDs.
 For example, 
 
     python -m gpcrmining.gpcrdb -n adrb1_human -id "6.24 6.27 6.50" -f drormd -s 'P0 P1'
