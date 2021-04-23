@@ -18,7 +18,7 @@ See below for an explanation on how to run the main script from the command line
 ## GPCRdb sequence numbering
 
 The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for the sequence of a GPCR, including definitions of transmembrane helices and generic residue numbering.
-Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious. Here we provide 
+Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious. Here we provide code to download and display this data.
 
 ### Obtain the entire sequence
 
