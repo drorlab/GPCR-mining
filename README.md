@@ -41,9 +41,9 @@ To select residues by their sequential number, use the option _-rn_. To select m
 To select residues by a generic residue numbering scheme, use the option _-id_.
 GPCRdb uses two similar [numbering systems](https://docs.gpcrdb.org/generic_numbering.html) (one sequence-based, following Ballesteros-Weistein, Wooten,... and one corrected for helix bulges).
 By default, the code will return the combined format. 
-For input, both formats can be used (BW etc. with a dot as sperator and the GPCRdb format with x). Numbering schemes can be mixed, e.g.,
+For input, both formats can be used (BW etc. with a dot as separator and the GPCRdb format with x) as well as the combined one. Numbering schemes can be mixed, e.g.,
 
-    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50"
+    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6.50x50"
 
 To select defined parts of the receptor, use the option _-p_.
 
@@ -51,7 +51,7 @@ To select defined parts of the receptor, use the option _-p_.
 
 If several selection flags are provided, only residues that fulfill all conditions will be printed. For example,
 
-    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6x50" -rn "230 231 232 233 313 339"    
+    python -m gpcrmining.gpcrdb -n adrb1_human -id "5.45 5x461 6.24 6.27 6.50x50" -rn "230 231 232 233 313 339"    
     
 prints the following:
 
@@ -63,7 +63,7 @@ prints the following:
 
 To obtain analogous residues across receptors, use a multiple-entry string, just as for the residues:
 
-    python -m gpcrmining.gpcrdb -n "adrb1_human adrb2_human" -id "5.45 5x461 6.24 6.27 6x50"
+    python -m gpcrmining.gpcrdb -n "adrb1_human adrb2_human" -id "5.45 5x461 6.24 6.27 6.50x50"
 
 
 ### Output formats
