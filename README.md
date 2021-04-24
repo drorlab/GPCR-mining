@@ -61,6 +61,10 @@ prints the following:
        TM6  313 R 6.24x24
        TM6  339 P 6.50x50
 
+To obtain analogous residues across receptors, use a multiple-entry string, just as for the residues:
+
+    python -m gpcrmining.gpcrdb -n "adrb1_human adrb2_human" -id "5.45 5x461 6.24 6.27 6x50"
+
 
 ### Output formats
 
