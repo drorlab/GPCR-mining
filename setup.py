@@ -12,6 +12,8 @@ setup(name='GPCR-mining',
       install_requires=[
         'numpy',
         'pandas',
+        'click',
+        'requests',
       ],
       classifiers=[
         # How mature is this project? Common values are
