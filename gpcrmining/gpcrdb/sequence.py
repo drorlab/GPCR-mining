@@ -214,8 +214,9 @@ def print_residues(ar, fmt='plain', segid='R'):
         # Print if a valid format is given
         if fmt=='plain':
             print('%6s %4s %1s %s'%(res[0],res[1],res[2],res[3]))
-        elif fmt=='drormd': 
-            print("    '%s': 'segid %s and resid %s'"%(reslabel, segid, resnum))           
+        elif fmt=='drormd':
+            drorlabel=reslabel.split('x')[0].replace('.','x')
+            print("    '%s': 'segid %s and resid %s',"%(drorlabel, segid, resnum))           
     return
     
     
