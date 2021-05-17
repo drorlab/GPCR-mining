@@ -20,7 +20,7 @@ setup(name='GPCR-mining',
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 1',
+        'Development Status :: 3',
         # license (should match "license" above)
         'License :: OSI Approved :: MIT License',
         # Supported Python versions
