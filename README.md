@@ -5,7 +5,7 @@ Functions to scrape GPCR data from the web.
 
 You can install the latest release of the python package via pip
 
-    pip install gpcr-mining
+    pip install gpcrmining
 
 or an editable installation from this repository
 
