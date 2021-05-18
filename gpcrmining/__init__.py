@@ -1,1 +1,1 @@
- 
+from .gpcrdb import *

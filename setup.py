@@ -1,7 +1,7 @@
 from setuptools import setup
 
-setup(name='GPCR-mining',
-      version='0.1.0',
+setup(name='gpcrmining',
+      version='0.1.1',
       description='Functions to scrape GPCR data from the web.',
       url='http://github.com/drorlab/GPCR-mining',
       author='Martin Voegele',
