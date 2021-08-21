@@ -5,4 +5,6 @@
 - [ ] Option to select receptor via [Uniprot mapping](https://files.gpcrdb.org/uniprot_mapping.txt).
 - [ ] Write proper unit tests.
 - [ ] Catch invalid inputs.
+- [ ] Mapping between PDB ID, Uniprot ID and GPCRdb ID of a given receptor.
+- [ ] Include information about structures from the AlphaFold-EMBL database.
 
