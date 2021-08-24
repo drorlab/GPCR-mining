@@ -315,7 +315,7 @@ def gpcrdb_to_sequential(gpcr_name, resnums):
     dbnums : list of int
         Sequential numbers of the residues.
     """
-    res_array = db.get_residue_info(gpcr_name)
+    res_array = get_residue_info(gpcr_name)
     label1 = {res[3]:int(res[1]) for res in res_array}
     seqnums = []
     for rn in resnums:
