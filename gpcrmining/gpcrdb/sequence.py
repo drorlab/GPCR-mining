@@ -307,13 +307,13 @@ def gpcrdb_to_sequential(gpcr_name, resnums):
     ----------
     gpcr_name : str
         Name of the GPCR as in the GPCRdb.
-    resnums : list of int
+    resnums : list of str
         Residue numbers in GPCRdb format without AA name, e.g., '5.42x43'.
         
     Returns
     -------
-    dbnums : list of str
-        GPCRdb numbering of the residues.
+    dbnums : list of int
+        Sequential numbers of the residues.
     """
     res_array = db.get_residue_info(gpcr_name)
     label1 = {res[3]:int(res[1]) for res in res_array}
