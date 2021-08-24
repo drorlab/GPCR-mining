@@ -266,6 +266,35 @@ def select_by_part(res_array, parts):
             out_list.append(res)
     return out_list
 
+
+# Functions to convert residue numbers
+
+def sequential_to_gpcrdb(gpcr_name, resnums):
+    """
+    Gets GPCRdb number for residues provided as sequential residue number.
     
+    Parameters
+    ----------
+    gpcr_name : str
+        Name of the GPCR as in the GPCRdb.
+    resnums : list of int
+        Sequential residue numbers.
+        
+    Returns
+    -------
+    dbnums : list of str
+        GPCRdb numbering of the residues.
+    """
+    res_array = get_residue_info(gpcr_name)
+    label3 = {int(res[1]):res[3] for res in res_array}
+    label0 = {int(res[1]):res[0] for res in res_array}
+    dbnums = []
+    for rn in resnums:
+        if rn in label3.keys():
+            label = label3[rn] if len(label3[rn])>0 else label0[rn]
+        else:
+            label = ''
+        dbnums.append(label)
+    return dbnums
 
 
