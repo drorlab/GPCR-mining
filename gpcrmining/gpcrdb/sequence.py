@@ -308,7 +308,7 @@ def gpcrdb_to_sequential(gpcr_name, resnums):
     gpcr_name : str
         Name of the GPCR as in the GPCRdb.
     resnums : list of int
-        Sequential residue numbers.
+        Residue numbers in GPCRdb format without AA name, e.g., '5.42x43'.
         
     Returns
     -------
