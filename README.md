@@ -1,8 +1,9 @@
 # GPCR-mining
-Functions to scrape GPCR data from the web.
+Functions to scrape data about G protein-coupled receptors (GPCRs) from the web.
 
-The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for the sequence of a GPCR, including definitions of transmembrane helices and generic residue numbering.
+The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for sequence information about a GPCR, including definitions of transmembrane helices and generic residue numbering.
 Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious. Here we provide code to download and display this data.
+
 
 ## Installation
 
@@ -15,8 +16,6 @@ or an editable installation from this repository
     git clone https://github.com/drorlab/GPCR-mining
     cd GPCR-mining
     pip install -e .
-
-See below for an explanation on how to run GPCR-mining functions within Python code or the main script from the command line.
 
 
 ## Run within Python code
@@ -108,5 +107,3 @@ prints the numbers in a format that can be directly copied into a DrorMD conditi
     'R6.24x24': 'segid P0 P1 and resid 313'
     'A6.27x27': 'segid P0 P1 and resid 316'
     'P6.50x50': 'segid P0 P1 and resid 339'
-
-    
