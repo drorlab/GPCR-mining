@@ -23,7 +23,7 @@ See below for an explanation on how to run GPCR-mining functions within Python c
 
 To include the functions in your Python workflow, import the library via
 
-    import gpcrmining.gpcrdb
+    import gpcrmining.gpcrdb as db
 
 For example, you can download all information into a list of residues
 
