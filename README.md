@@ -27,7 +27,7 @@ To include the functions in your Python workflow, import the library via
 For example, you can download all information into a list of residues
 
     gpcr_name = 'acm2_human'
-    res_info = get_residue_info(gpcr_name)
+    res_info = db.get_residue_info(gpcr_name)
 
 ... convert sequential numbers to the generic GPCRdb numbers
 
