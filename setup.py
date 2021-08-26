@@ -4,11 +4,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(name='gpcrmining',
-      version='0.1.6',
+      version='0.1.7',
       description='Functions to scrape GPCR data from the web.',
       url='http://github.com/drorlab/GPCR-mining',
       author='Martin Voegele',
-      author_email='mvoegele@stanford.edu',
+      author_email='martinvoegele1989@gmail.com',
       license='MIT',
       packages=find_packages(include=[
         'gpcrmining',
