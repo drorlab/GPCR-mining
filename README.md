@@ -1,6 +1,9 @@
 # GPCR-mining
 Functions to scrape GPCR data from the web.
 
+The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for the sequence of a GPCR, including definitions of transmembrane helices and generic residue numbering.
+Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious. Here we provide code to download and display this data.
+
 ## Installation
 
 You can install the latest release of the python package via pip
@@ -13,16 +16,32 @@ or an editable installation from this repository
     cd GPCR-mining
     pip install -e .
 
-To include the functions in your Python workflow, ipmport the library via
+See below for an explanation on how to run GPCR-mining functions within Python code or the main script from the command line.
+
+
+## Run within Python code
+
+To include the functions in your Python workflow, import the library via
 
     import gpcrmining.gpcrdb
-    
-See below for an explanation on how to run the main script from the command line.
 
-## GPCRdb sequence numbering
+For example, you can download all information into a list of residues
 
-The [__GPCRdb__](https://gpcrdb.org) provides a comprehensive overview for the sequence of a GPCR, including definitions of transmembrane helices and generic residue numbering.
-Looking up a large number of residues or including the conversion for a specific receptor into an automated workflow can become tedious. Here we provide code to download and display this data.
+    gpcr_name = 'acm2_human'
+    res_info = get_residue_info(gpcr_name)
+
+... convert sequential numbers to the generic GPCRdb numbers
+
+    db_num = db.sequential_to_gpcrdb('acm2_human', [393, 194, 151, 154, 190, 68, 108]))
+    print(db_num)
+
+... or the other way round
+
+    seq_num = db.gpcrdb_to_sequential('acm2_human', ['6.41x41', '5.46x461', '4.56x56', '5.42x43'])    
+    print(seq_num)
+
+
+## Run from the command line
 
 ### Obtain the entire sequence
 
