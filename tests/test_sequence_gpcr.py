@@ -23,3 +23,4 @@ def test_sequential_to_gpcrdb():
     gen = db.sequential_to_gpcrdb(gpcr_name, seq_num)
     assert gen == gen_num
     pass
+    

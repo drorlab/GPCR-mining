@@ -53,14 +53,21 @@ def download_gpcrdb_residues(name, directory=None, show=False, scrape=False):
     return residue_info
     
     
-def get_residue_info(name):
+def get_residue_info(name, num_scheme=None, verbose=False):
     """
-    Gets residue info from the GPCRdb API
+    Gets residue info from the GPCRdb
     
     Parameters
     ----------
         name : str
-            Name of the GPCR to download (as in its GPCRdb URL). 
+            Name of the protein to download (as in its GPCRdb URL). 
+        num_scheme : str
+            Alternative numbering scheme to use. 
+            If None, use the system used for display in the GPCRdb.
+            Only works for GPCRs, not for arrestins or G proteins.
+        verbose : bool
+            Print info about the numbering scheme.
+            
             
     Returns
     -------
@@ -70,13 +77,16 @@ def get_residue_info(name):
             - sequential residue number
             - amino acid 1-letter code
             - GPCRdb residue ID
+            
     """
     # Fetch the protein 
     url = 'https://gpcrdb.org/services/protein/'+name
     response = requests.get(url)
     protein_data = response.json()
-    # Determine the numbering scheme to use
-    num_scheme = protein_data['residue_numbering_scheme']
+    # Determine the numbering scheme
+    if num_scheme is None and verbose:
+        scheme = protein_data['residue_numbering_scheme']
+        print('Numbering scheme: '+scheme)
     # Fetch the residue information
     url = 'https://gpcrdb.org/services/residues/extended/'+name
     response = requests.get(url)
@@ -87,10 +97,14 @@ def get_residue_info(name):
         res_part = res['protein_segment']
         res_seqn = res['sequence_number']
         res_code = res['amino_acid']
-        res_dbid = ''
-        for num in res['alternative_generic_numbers']:
-            if num['scheme'] == num_scheme:
-                res_dbid = num['label']
+        if num_scheme == None:
+            res_dbid = res['display_generic_number']
+        else:
+            res_dbid = ''
+            for num in res['alternative_generic_numbers']:
+                if num['scheme'] == num_scheme:
+                    res_dbid = num['label']
+        if res_dbid == None: res_dbid = ''
         residue_info.append([res_part, res_seqn, res_code, res_dbid])
     return residue_info
 

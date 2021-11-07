@@ -3,10 +3,10 @@
 - [x] Option for multiple receptors (as whitespace-separated string).
 - [x] Option to circumvent download (--no-write).
 - [ ] Option to select receptor via [Uniprot mapping](https://files.gpcrdb.org/uniprot_mapping.txt).
-- [ ] Add example for using the library in python to the documentation.
+- [x] Add example for using the library in python to the documentation.
 - [ ] Write proper unit tests.
 - [ ] Create doc pages?
 - [ ] Catch invalid inputs.
 - [ ] Mapping between PDB ID, Uniprot ID and GPCRdb ID of a given receptor.
 - [ ] Include information about structures from the AlphaFold-EMBL database.
-
+- [x] Make numbering conversion work for arrestins and G proteins
