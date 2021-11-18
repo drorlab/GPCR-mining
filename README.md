@@ -24,7 +24,9 @@ To include the functions in your Python workflow, import the library via
 
     import gpcrmining.gpcrdb as db
 
-For example, you can download all information into a list of residues
+### Sequence information
+
+You can download all information into a list of residues
 
     gpcr_name = 'acm2_human'
     res_info = db.get_residue_info(gpcr_name)
@@ -39,6 +41,17 @@ For example, you can download all information into a list of residues
     seq_num = db.gpcrdb_to_sequential('acm2_human', ['6.41x41', '5.46x461', '4.56x56', '5.42x43'])    
     print(seq_num)
 
+### Structures
+
+You can obtain information about any GPCR structure from the PDB such as the entry names of receptor and signaling proteins, chain names, or details on the experimental method. Run the following to obtain a dictionary with the corresponding information:
+
+    info = db.get_structure_info('6u1m')
+    print(info)
+    
+To download the PDB file to a new directory, run
+
+    download_pdb_structure('6u1m', directory='structures')
+    
 
 ## Run from the command line
 
