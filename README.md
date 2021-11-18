@@ -40,6 +40,8 @@ You can download all information into a list of residues
 
     seq_num = db.gpcrdb_to_sequential('acm2_human', ['6.41x41', '5.46x461', '4.56x56', '5.42x43'])    
     print(seq_num)
+    
+These conversion functions also work with the generic numbering schemes for signalling proteins (arrestins and G proteins).
 
 ### Structures
 
