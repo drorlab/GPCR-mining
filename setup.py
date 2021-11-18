@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(name='gpcrmining',
-      version='0.1.9',
+      version='0.2.0',
       description='Functions to scrape GPCR data from the web.',
       url='http://github.com/drorlab/GPCR-mining',
       author='Martin Voegele',
